@@ -613,6 +613,24 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: -7, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -6, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: 9, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -660,7 +678,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 42
+  - m_RefCount: 44
     m_Data: {fileID: 11400000, guid: 3d4fbab213c38b246963415e05cb5b74, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -669,7 +687,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 42
+  - m_RefCount: 44
     m_Data: {fileID: 1807125615787039003, guid: 8d69535a59f656c4088ebb83127ad1a5,
       type: 3}
   - m_RefCount: 0
@@ -679,7 +697,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 42
+  - m_RefCount: 44
     m_Data:
       e00: 1
       e01: 0
@@ -698,7 +716,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 42
+  - m_RefCount: 44
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1243,25 +1261,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!1 &1614946442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7426960688099901431, guid: 7b2dc2db2b77b0147b251f28d6ea45a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7426960686485217149}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1614946449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614946442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ceb55402aecfa4db3fa62ed0fd490e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_edible: 1
 --- !u!1001 &693012440728661165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1358,12 +1357,12 @@ PrefabInstance:
     - target: {fileID: 1055839990355162409, guid: 6737e6b82c46ef74db38ae653c13da56,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.94
+      value: -6.02
       objectReference: {fileID: 0}
     - target: {fileID: 1055839990355162409, guid: 6737e6b82c46ef74db38ae653c13da56,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 1055839990355162409, guid: 6737e6b82c46ef74db38ae653c13da56,
         type: 3}

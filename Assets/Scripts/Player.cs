@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public CharacterController2D m_controller;
     public Transform m_carrySlot;
+    public Collider2D m_actionRadius;
 
     private float m_horizontal = 0.0f;
     private bool m_jump = false;
     private Carryable m_carriedObject = null;
+    private bool m_action = false;
 
     void Update()
     {
@@ -15,6 +18,33 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             m_jump = true;
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            DoAction();
+        }
+    }
+
+    private void DoAction()
+    {
+        var colliders = new List<Collider2D>();
+        m_actionRadius.GetContacts(colliders);
+        foreach (var collider in colliders)
+        {
+            var carryable = collider.gameObject.GetComponent<Carryable>();
+            if (carryable != null && !IsCarryingObject())
+            {
+                Carry(carryable);
+                break;
+            }
+
+            var bowl = collider.gameObject.GetComponent<Bowl>();
+            if (bowl != null && IsCarryingObject() && !bowl.IsFull())
+            {
+                FillBowl(bowl);
+                break;
+            }
         }
     }
 
@@ -26,18 +56,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var carryable = collision.gameObject.GetComponent<Carryable>();
-        if (carryable != null && !IsCarryingObject())
-        {
-            Carry(carryable);
-        }
-
-        var bowl = collision.gameObject.GetComponent<Bowl>();
-        if (bowl != null && IsCarryingObject() && !bowl.IsFull())
-        {
-            FillBowl(bowl);
-        }
-
         var damage = collision.gameObject.GetComponent<DamageDealer>();
         if (damage != null)
         {
