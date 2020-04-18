@@ -29,7 +29,7 @@ public class Bowl : MonoBehaviour
 
     public void Put(Carryable carryable)
     {
-        GameObject.Destroy(carryable.gameObject);
+        GameObject.Destroy(carryable.m_owner.gameObject);
         SetFull(true);
     }
 
