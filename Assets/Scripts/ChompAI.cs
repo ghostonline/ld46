@@ -97,11 +97,20 @@ public class ChompAI : MonoBehaviour
             if (currentChainLength > m_chainLength)
             {
                 var normal = anchorOffset / currentChainLength;
-                float dot = Vector2.Dot(m_rigidbody.velocity, normal);
-                if (dot > 0f)
+                if (m_rigidbody.velocity.sqrMagnitude != 0)
                 {
-                    m_rigidbody.AddForce(-anchorOffset, ForceMode2D.Impulse);
+                    float dot = Vector2.Dot(m_rigidbody.velocity, normal);
+                    if (dot >= 0f)
+                    {
+                        m_rigidbody.AddForce(-anchorOffset, ForceMode2D.Impulse);
+                    }
                 }
+                else
+                {
+                    m_rigidbody.MovePosition(m_anchor.position + (Vector3)(normal * m_chainLength));
+                }
+
+                m_state = ChompAIState.Active;
             }
         }
     }
