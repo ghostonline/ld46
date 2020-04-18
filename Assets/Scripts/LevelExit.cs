@@ -38,7 +38,6 @@ public class LevelExit : MonoBehaviour
 
     private void RestartLevel()
     {
-        var current = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(current.buildIndex, LoadSceneMode.Single);
+        GameController.Instance.OnLevelExit();
     }
 }

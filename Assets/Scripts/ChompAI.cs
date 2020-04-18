@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ChompAIState
 {
     Sleeping,
-    Active,
+    Hungry,
+    Fed,
 }
 
 public class ChompAI : MonoBehaviour
@@ -16,9 +17,12 @@ public class ChompAI : MonoBehaviour
     public float m_jumpForce = 250f;
     public Transform m_anchor;
     public float m_chainLength = 3f;
-    public ChompAIState m_initialState = ChompAIState.Active;
+    public ChompAIState m_initialState = ChompAIState.Hungry;
     public bool m_fixedAnchor = false;
+    public float m_eatRange = 1f;
+    public float m_eatDuration = 2f;
 
+    float m_eatTimer = 0f;
     float m_movement = 0f;
     Rigidbody2D m_rigidbody;
     ChompAIState m_state;
@@ -41,21 +45,26 @@ public class ChompAI : MonoBehaviour
 
     void Update()
     {
-        if (m_state == ChompAIState.Active)
+        if (m_state == ChompAIState.Hungry)
         {
             var target = FindNearestEdible();
             if (target)
             {
-                ChaseTarget(target);
+                ChaseFood(target);
             }
             else
             {
                 Idle();
             }
         }
+        else if (m_state == ChompAIState.Fed)
+        {
+            var target = FindNearestPlayer();
+            ChaseTarget(target.transform);
+        }
     }
 
-    Transform FindNearestEdible()
+    Food FindNearestEdible()
     {
         Food nearest = null;
         float nearestDistance = float.PositiveInfinity;
@@ -69,16 +78,36 @@ public class ChompAI : MonoBehaviour
             }
         }
 
-        return nearest ? nearest.transform : null;
+        return nearest ? nearest : null;
     }
 
-    void ChaseTarget(Transform target)
+    void ChaseFood(Food target)
+    {
+        var targetOffset = ChaseTarget(target.transform);
+
+        if (targetOffset.magnitude < m_eatRange && target.m_satisfying)
+        {
+            m_eatTimer += Time.deltaTime;
+
+            if (m_eatTimer >= m_eatDuration)
+            {
+                target.Consume();
+                m_state = ChompAIState.Fed;
+            }
+        }
+        else
+        {
+            m_eatTimer = 0;
+        }
+    }
+
+    Vector3 ChaseTarget(Transform target)
     {
         Vector3 targetOffset = target.position - transform.position;
 
         m_movement = Mathf.Clamp(targetOffset.x, -m_speed, m_speed);
 
-        if (targetOffset.y > 2f && Mathf.Abs(targetOffset.x) < 4f)
+        if (m_state == ChompAIState.Hungry && targetOffset.y > 2f && Mathf.Abs(targetOffset.x) < 4f)
         {
             m_controller.JumpForce = m_jumpForce;
         }
@@ -86,6 +115,8 @@ public class ChompAI : MonoBehaviour
         {
             m_controller.JumpForce = m_hopForce;
         }
+
+        return targetOffset;
     }
 
     void Idle()
@@ -94,9 +125,26 @@ public class ChompAI : MonoBehaviour
         m_controller.JumpForce = m_hopForce;
     }
 
+    Player FindNearestPlayer()
+    {
+        Player nearest = null;
+        float nearestDistance = float.PositiveInfinity;
+        foreach (var player in FindObjectsOfType<Player>())
+        {
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearest = player;
+            }
+        }
+
+        return nearest ? nearest : null;
+    }
+
     private void FixedUpdate()
     {
-        if (m_state == ChompAIState.Active)
+        if (m_state == ChompAIState.Hungry)
         {
             m_controller.Move(m_movement, false, true);
         }
@@ -115,7 +163,7 @@ public class ChompAI : MonoBehaviour
                 {
                     MoveAnchor(anchorOffset);
                 }
-                m_state = ChompAIState.Active;
+                m_state = ChompAIState.Hungry;
             }
         }
     }
@@ -160,7 +208,7 @@ public class ChompAI : MonoBehaviour
     {
         if (m_state == ChompAIState.Sleeping)
         {
-            m_state = ChompAIState.Active;
+            m_state = ChompAIState.Hungry;
         }
     }
 }

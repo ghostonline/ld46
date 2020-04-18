@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_edible: 1
+  m_satisfying: 1
 --- !u!50 &4892338818866811709
 Rigidbody2D:
   serializedVersion: 4
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 693012440491782297}
-  m_originalParent: {fileID: 0}
+  m_food: {fileID: 0}
 --- !u!114 &5587119442637479967
 MonoBehaviour:
   m_ObjectHideFlags: 0
