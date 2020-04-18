@@ -14,7 +14,19 @@ public class ChompAI : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetOffset = m_target.position - transform.position;
+        if (m_target)
+        {
+            ChaseTarget(m_target);
+        }
+        else
+        {
+            Idle();
+        }
+    }
+
+    void ChaseTarget(Transform target)
+    {
+        Vector3 targetOffset = target.position - transform.position;
 
         m_movement = Mathf.Clamp(targetOffset.x, -m_speed, m_speed);
 
@@ -26,6 +38,12 @@ public class ChompAI : MonoBehaviour
         {
             m_controller.JumpForce = m_hopForce;
         }
+    }
+
+    void Idle()
+    {
+        m_movement = 0f;
+        m_controller.JumpForce = m_hopForce;
     }
 
     private void FixedUpdate()

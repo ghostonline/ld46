@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
         {
             Drop(bowl);
         }
+
+        var damage = collision.gameObject.GetComponent<DamageDealer>();
+        if (damage != null)
+        {
+            Die();
+        }
     }
 
     private bool IsCarryingObject()
@@ -55,6 +61,22 @@ public class Player : MonoBehaviour
     {
         Debug.Assert(IsCarryingObject(), "Cannot drop anything if not carrying");
         recepticle.Put(m_carriedObject);
+        m_carriedObject = null;
+    }
+
+    private void Die()
+    {
+        if (IsCarryingObject())
+        {
+            DropObject();
+        }
+
+        GameObject.Destroy(gameObject);
+    }
+
+    private void DropObject()
+    {
+        m_carriedObject.transform.parent = transform.parent;
         m_carriedObject = null;
     }
 }
