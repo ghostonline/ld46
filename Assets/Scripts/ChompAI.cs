@@ -17,15 +17,26 @@ public class ChompAI : MonoBehaviour
     public Transform m_anchor;
     public float m_chainLength = 3f;
     public ChompAIState m_initialState = ChompAIState.Active;
+    public bool m_fixedAnchor = false;
 
     float m_movement = 0f;
     Rigidbody2D m_rigidbody;
     ChompAIState m_state;
+    Rigidbody2D m_anchorRigidbody;
 
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_state = m_initialState;
+    }
+
+    private void Start()
+    {
+        m_anchorRigidbody = m_anchor.GetComponent<Rigidbody2D>();
+        if (m_fixedAnchor)
+        {
+            m_anchorRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
     }
 
     void Update()
@@ -96,22 +107,52 @@ public class ChompAI : MonoBehaviour
             var currentChainLength = anchorOffset.magnitude;
             if (currentChainLength > m_chainLength)
             {
-                var normal = anchorOffset / currentChainLength;
-                if (m_rigidbody.velocity.sqrMagnitude != 0)
+                if (m_fixedAnchor)
                 {
-                    float dot = Vector2.Dot(m_rigidbody.velocity, normal);
-                    if (dot >= 0f)
-                    {
-                        m_rigidbody.AddForce(-anchorOffset, ForceMode2D.Impulse);
-                    }
+                    MoveChomp(-anchorOffset);
                 }
                 else
                 {
-                    m_rigidbody.MovePosition(m_anchor.position + (Vector3)(normal * m_chainLength));
+                    MoveAnchor(anchorOffset);
                 }
-
                 m_state = ChompAIState.Active;
             }
+        }
+    }
+
+    void MoveChomp(Vector2 offset)
+    {
+        var normal = -offset.normalized;
+        if (m_rigidbody.velocity.sqrMagnitude != 0)
+        {
+            float dot = Vector2.Dot(m_rigidbody.velocity, normal);
+            if (dot >= 0f)
+            {
+                m_rigidbody.AddForce(offset, ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            m_rigidbody.MovePosition(m_anchor.position + (Vector3)(normal * m_chainLength));
+        }
+    }
+
+    void MoveAnchor(Vector2 offset)
+    {
+        var rigidbody = m_anchor.GetComponent<Rigidbody2D>();
+        var normal = -offset.normalized;
+        if (rigidbody.velocity.sqrMagnitude != 0)
+        {
+            float dot = Vector2.Dot(rigidbody.velocity, normal);
+            if (dot >= 0f)
+            {
+                rigidbody.AddForce(offset, ForceMode2D.Impulse);
+                rigidbody.AddTorque((Random.value - 0.5f) * 10f);
+            }
+        }
+        else
+        {
+            rigidbody.AddForce(offset, ForceMode2D.Impulse);
         }
     }
 }
