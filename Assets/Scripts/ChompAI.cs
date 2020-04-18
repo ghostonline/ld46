@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ChompAIState
+{
+    Sleeping,
+    Active,
+}
+
 public class ChompAI : MonoBehaviour
 {
     public CharacterController2D m_controller;
@@ -10,25 +16,31 @@ public class ChompAI : MonoBehaviour
     public float m_jumpForce = 250f;
     public Transform m_anchor;
     public float m_chainLength = 3f;
+    public ChompAIState m_initialState = ChompAIState.Active;
 
     float m_movement = 0f;
     Rigidbody2D m_rigidbody;
+    ChompAIState m_state;
 
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_state = m_initialState;
     }
 
     void Update()
     {
-        var target = FindNearestEdible();
-        if (target)
+        if (m_state == ChompAIState.Active)
         {
-            ChaseTarget(target);
-        }
-        else
-        {
-            Idle();
+            var target = FindNearestEdible();
+            if (target)
+            {
+                ChaseTarget(target);
+            }
+            else
+            {
+                Idle();
+            }
         }
     }
 
@@ -73,7 +85,11 @@ public class ChompAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_controller.Move(m_movement, false, true);
+        if (m_state == ChompAIState.Active)
+        {
+            m_controller.Move(m_movement, false, true);
+        }
+
         if (m_anchor)
         {
             Vector2 anchorOffset = transform.position - m_anchor.position;

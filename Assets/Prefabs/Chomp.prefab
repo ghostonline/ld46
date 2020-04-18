@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 8364966159689438549}
   - component: {fileID: 8364966159689438546}
   - component: {fileID: 8364966159689438633}
+  - component: {fileID: 6295380015102674506}
   m_Layer: 0
   m_Name: Chomp
   m_TagString: Untagged
@@ -191,10 +192,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_controller: {fileID: 8364966159689438548}
-  m_target: {fileID: 0}
   m_speed: 0.5
   m_hopForce: 200
   m_jumpForce: 400
+  m_anchor: {fileID: 0}
+  m_chainLength: 3
+  m_initialState: 0
 --- !u!58 &8364966159689438546
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,6 +235,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6295380015102674506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364966159689438547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd595806b55e1c42bcd7477c68621a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8364966160454410112
 GameObject:
   m_ObjectHideFlags: 0
