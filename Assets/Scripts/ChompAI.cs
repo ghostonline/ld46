@@ -155,4 +155,12 @@ public class ChompAI : MonoBehaviour
             rigidbody.AddForce(offset, ForceMode2D.Impulse);
         }
     }
+
+    public void WakeUp()
+    {
+        if (m_state == ChompAIState.Sleeping)
+        {
+            m_state = ChompAIState.Active;
+        }
+    }
 }

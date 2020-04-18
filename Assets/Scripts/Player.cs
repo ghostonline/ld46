@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
         if (IsCarryingObject())
         {
-            if (newBowl != null)
+            if (newBowl != null && IsCarryingFood())
             {
                 FillBowl(newBowl);
             }
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         var damage = collision.gameObject.GetComponent<DamageDealer>();
         if (damage != null)
         {
+            damage.TriggerDamage();
             Die();
         }
     }
@@ -87,6 +88,11 @@ public class Player : MonoBehaviour
     private bool IsCarryingObject()
     {
         return m_carriedObject != null;
+    }
+
+    private bool IsCarryingFood()
+    {
+        return m_carriedObject.isFood;
     }
 
     private void PickUp(Carryable carryable)
