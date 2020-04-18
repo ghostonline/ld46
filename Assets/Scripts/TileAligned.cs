@@ -9,6 +9,7 @@ public class TileAligned : MonoBehaviour
         var pos = transform.position;
         pos.x = Mathf.Round(pos.x * 2f) / 2f;
         pos.y = Mathf.Round(pos.y * 2f) / 2f;
+        pos.z = 0f;
         transform.position = pos;
     }
 }

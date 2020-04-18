@@ -8,8 +8,16 @@ public class ChompAI : MonoBehaviour
     public float m_speed = 1f;
     public float m_hopForce = 50f;
     public float m_jumpForce = 250f;
+    public Transform m_anchor;
+    public float m_chainLength = 3f;
 
     float m_movement = 0f;
+    Rigidbody2D m_rigidbody;
+
+    private void Awake()
+    {
+        m_rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
@@ -38,7 +46,7 @@ public class ChompAI : MonoBehaviour
             }
         }
 
-        return nearest.transform;
+        return nearest ? nearest.transform : null;
     }
 
     void ChaseTarget(Transform target)
@@ -66,5 +74,19 @@ public class ChompAI : MonoBehaviour
     private void FixedUpdate()
     {
         m_controller.Move(m_movement, false, true);
+        if (m_anchor)
+        {
+            Vector2 anchorOffset = transform.position - m_anchor.position;
+            var currentChainLength = anchorOffset.magnitude;
+            if (currentChainLength > m_chainLength)
+            {
+                var normal = anchorOffset / currentChainLength;
+                float dot = Vector2.Dot(m_rigidbody.velocity, normal);
+                if (dot > 0f)
+                {
+                    m_rigidbody.AddForce(-anchorOffset, ForceMode2D.Impulse);
+                }
+            }
+        }
     }
 }
