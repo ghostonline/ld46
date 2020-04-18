@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Geometry
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Geometry
+    uniqueID: 1862215725
+    locked: 0
+  - name: Items
+    uniqueID: 2214580071
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
