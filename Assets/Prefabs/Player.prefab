@@ -292,6 +292,7 @@ MonoBehaviour:
   m_controller: {fileID: 7426960688099901426}
   m_carrySlot: {fileID: 7426960687239288140}
   m_actionRadius: {fileID: 1289072624}
+  m_rigidbody: {fileID: 7426960688099901427}
 --- !u!114 &7426960688099901426
 MonoBehaviour:
   m_ObjectHideFlags: 0

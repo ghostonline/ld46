@@ -6,11 +6,11 @@ public class Player : MonoBehaviour
     public CharacterController2D m_controller;
     public Transform m_carrySlot;
     public Collider2D m_actionRadius;
+    public Rigidbody2D m_rigidbody;
 
     private float m_horizontal = 0.0f;
     private bool m_jump = false;
     private Carryable m_carriedObject = null;
-    private bool m_action = false;
 
     void Update()
     {
@@ -30,21 +30,42 @@ public class Player : MonoBehaviour
     {
         var colliders = new List<Collider2D>();
         m_actionRadius.GetContacts(colliders);
+        Carryable newCarryable = null;
+        Bowl newBowl = null;
         foreach (var collider in colliders)
         {
-            var carryable = collider.gameObject.GetComponent<Carryable>();
-            if (carryable != null && !IsCarryingObject())
+            var bowl = collider.gameObject.GetComponent<Bowl>();
+            if (bowl != null && !bowl.IsFull())
             {
-                Carry(carryable);
-                break;
+                newBowl = bowl;
             }
 
-            var bowl = collider.gameObject.GetComponent<Bowl>();
-            if (bowl != null && IsCarryingObject() && !bowl.IsFull())
+            var carryable = collider.gameObject.GetComponent<Carryable>();
+            if (carryable != null && carryable != m_carriedObject)
             {
-                FillBowl(bowl);
-                break;
+                newCarryable = carryable;
             }
+        }
+
+        if (IsCarryingObject())
+        {
+            if (newBowl != null)
+            {
+                FillBowl(newBowl);
+            }
+            else if (newCarryable != null)
+            {
+                DropObject();
+                PickUp(newCarryable);
+            }
+            else
+            {
+                DropObject();
+            }
+        }
+        else if (newCarryable != null)
+        {
+            PickUp(newCarryable);
         }
     }
 
@@ -68,11 +89,10 @@ public class Player : MonoBehaviour
         return m_carriedObject != null;
     }
 
-    private void Carry(Carryable carryable)
+    private void PickUp(Carryable carryable)
     {
         m_carriedObject = carryable;
-        m_carriedObject.transform.parent = m_carrySlot;
-        m_carriedObject.transform.localPosition = Vector3.zero;
+        m_carriedObject.StartCarry(m_carrySlot);
     }
 
     private void FillBowl(Bowl recepticle)
@@ -95,7 +115,7 @@ public class Player : MonoBehaviour
     private void DropObject()
     {
         Debug.Assert(IsCarryingObject(), "Cannot drop anything if not carrying");
-        m_carriedObject.transform.parent = transform.parent;
+        m_carriedObject.StopCarry();
         m_carriedObject = null;
     }
 }
