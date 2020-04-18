@@ -5,7 +5,6 @@ using UnityEngine;
 public class ChompAI : MonoBehaviour
 {
     public CharacterController2D m_controller;
-    public Transform m_target;
     public float m_speed = 1f;
     public float m_hopForce = 50f;
     public float m_jumpForce = 250f;
@@ -14,14 +13,32 @@ public class ChompAI : MonoBehaviour
 
     void Update()
     {
-        if (m_target)
+        var target = FindNearestEdible();
+        if (target)
         {
-            ChaseTarget(m_target);
+            ChaseTarget(target);
         }
         else
         {
             Idle();
         }
+    }
+
+    Transform FindNearestEdible()
+    {
+        Food nearest = null;
+        float nearestDistance = float.PositiveInfinity;
+        foreach(var food in FindObjectsOfType<Food>())
+        {
+            float distance = Vector3.Distance(food.transform.position, transform.position);
+            if (food.m_edible && distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearest = food;
+            }
+        }
+
+        return nearest.transform;
     }
 
     void ChaseTarget(Transform target)

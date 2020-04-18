@@ -22,10 +22,10 @@ TextureImporter:
     second: food
   - first:
       213: -7995846982363831464
-    second: tiles_6
+    second: guard
   - first:
       213: -4202638810691693305
-    second: tiles_7
+    second: bowl_full
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_6
+      name: guard
       rect:
         serializedVersion: 2
         x: 32
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_7
+      name: bowl_full
       rect:
         serializedVersion: 2
         x: 48

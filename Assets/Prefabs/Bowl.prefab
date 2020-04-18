@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 693012440491782302}
   - component: {fileID: 693012440491782299}
   - component: {fileID: 693012440491782296}
+  - component: {fileID: 922655799}
+  - component: {fileID: 922655800}
   m_Layer: 9
   m_Name: Bowl
   m_TagString: Untagged
@@ -112,3 +114,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5080324b48b110f459d6d8fc19715d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_emptyBowl: {fileID: 2157240733274199957, guid: 8d69535a59f656c4088ebb83127ad1a5,
+    type: 3}
+  m_fullBowl: {fileID: -4202638810691693305, guid: 8d69535a59f656c4088ebb83127ad1a5,
+    type: 3}
+  m_renderer: {fileID: 693012440491782302}
+  m_foodState: {fileID: 922655800}
+--- !u!114 &922655799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693012440491782303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd595806b55e1c42bcd7477c68621a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &922655800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693012440491782303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ceb55402aecfa4db3fa62ed0fd490e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_edible: 1

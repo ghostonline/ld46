@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
         }
 
         var bowl = collision.gameObject.GetComponent<Bowl>();
-        if (bowl != null && IsCarryingObject())
+        if (bowl != null && IsCarryingObject() && !bowl.IsFull())
         {
-            Drop(bowl);
+            FillBowl(bowl);
         }
 
         var damage = collision.gameObject.GetComponent<DamageDealer>();
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         m_carriedObject.transform.localPosition = Vector3.zero;
     }
 
-    private void Drop(Bowl recepticle)
+    private void FillBowl(Bowl recepticle)
     {
         Debug.Assert(IsCarryingObject(), "Cannot drop anything if not carrying");
         recepticle.Put(m_carriedObject);
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
 
     private void DropObject()
     {
+        Debug.Assert(IsCarryingObject(), "Cannot drop anything if not carrying");
         m_carriedObject.transform.parent = transform.parent;
         m_carriedObject = null;
     }
