@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
         get { return m_instance; }
     }
 
+    public ChompAI m_chomp;
+
     private bool m_died = false;
     private bool m_chompFed = false;
 
@@ -27,6 +29,14 @@ public class GameController : MonoBehaviour
             targetScene += 1;
         }
         SceneManager.LoadScene(targetScene);
+    }
+
+    public void OnBowlFilled()
+    {
+        if (m_chomp)
+        {
+            m_chomp.WakeUp();
+        }
     }
 
     public void OnChompFed()

@@ -31,6 +31,7 @@ public class Bowl : MonoBehaviour
     {
         GameObject.Destroy(carryable.m_owner.gameObject);
         SetFull(true);
+        GameController.Instance.OnBowlFilled();
     }
 
     private void SetFull(bool value)

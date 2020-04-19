@@ -212,8 +212,10 @@ MonoBehaviour:
   m_jumpForce: 400
   m_anchor: {fileID: 0}
   m_chainLength: 3
-  m_initialState: 0
+  m_initialState: 1
   m_fixedAnchor: 1
+  m_eatRange: 1
+  m_eatDuration: 2
 --- !u!58 &8364966159689438546
 CircleCollider2D:
   m_ObjectHideFlags: 0
