@@ -213,9 +213,11 @@ MonoBehaviour:
   m_anchor: {fileID: 0}
   m_chainLength: 3
   m_initialState: 1
-  m_fixedAnchor: 1
+  m_fixedAnchor: 0
   m_eatRange: 1
   m_eatDuration: 2
+  m_chainLinkPrefab: {fileID: 8605230396051028548, guid: 522bce426a378694db35de196346c126,
+    type: 3}
 --- !u!58 &8364966159689438546
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -758,11 +758,6 @@ PrefabInstance:
       propertyPath: m_anchor
       value: 
       objectReference: {fileID: 675980603}
-    - target: {fileID: 8364966159689438549, guid: 29274f25de208f04099f89be554fd4f2,
-        type: 3}
-      propertyPath: m_fixedAnchor
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8364966159689438550, guid: 29274f25de208f04099f89be554fd4f2,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -753,6 +753,12 @@ PrefabInstance:
       propertyPath: m_anchor
       value: 
       objectReference: {fileID: 675980603}
+    - target: {fileID: 8364966159689438549, guid: 29274f25de208f04099f89be554fd4f2,
+        type: 3}
+      propertyPath: m_chainLinkPrefab
+      value: 
+      objectReference: {fileID: 8605230396051028548, guid: 522bce426a378694db35de196346c126,
+        type: 3}
     - target: {fileID: 8364966159689438550, guid: 29274f25de208f04099f89be554fd4f2,
         type: 3}
       propertyPath: m_LocalPosition.x

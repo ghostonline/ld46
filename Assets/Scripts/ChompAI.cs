@@ -21,12 +21,14 @@ public class ChompAI : MonoBehaviour
     public bool m_fixedAnchor = false;
     public float m_eatRange = 1f;
     public float m_eatDuration = 2f;
+    public Transform m_chainLinkPrefab;
 
     float m_eatTimer = 0f;
     float m_movement = 0f;
     Rigidbody2D m_rigidbody;
     ChompAIState m_state;
     Rigidbody2D m_anchorRigidbody;
+    Transform[] m_chainLinks;
 
     private void Awake()
     {
@@ -40,6 +42,19 @@ public class ChompAI : MonoBehaviour
         if (m_fixedAnchor)
         {
             m_anchorRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        CreateChain();
+    }
+
+    void CreateChain()
+    {
+        m_chainLinks = new Transform[5];
+        for (int ii = 0; ii < m_chainLinks.Length; ++ii)
+        {
+            var link = GameObject.Instantiate(m_chainLinkPrefab);
+            link.name = string.Format("ChainLink_{0}", ii);
+            link.parent = transform;
+            m_chainLinks[ii] = link;
         }
     }
 
@@ -64,6 +79,23 @@ public class ChompAI : MonoBehaviour
             {
                 ChaseTarget(target.transform);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        UpdateChain();
+    }
+
+    void UpdateChain()
+    {
+        var start = transform.position;
+        var end = m_anchor.position;
+        var offset = end - start;
+        var step = offset / (m_chainLinks.Length + 1);
+        for (int ii = 0; ii < m_chainLinks.Length; ++ii)
+        {
+            m_chainLinks[ii].position = start + step * (ii + 1);
         }
     }
 
