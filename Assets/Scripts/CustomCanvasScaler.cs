@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Source: https://github.com/Unity-Technologies/2d-pixel-perfect/
 public class CustomCanvasScaler : CanvasScaler
 {
     private Canvas m_RootCanvas;
