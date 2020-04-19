@@ -212,11 +212,9 @@ public class ChompAI : MonoBehaviour
 
     public void WakeUp()
     {
-        Debug.LogFormat("WakeUp: {0}", m_state);
         if (m_state == ChompAIState.Sleeping)
         {
             m_state = ChompAIState.Hungry;
         }
-        Debug.LogFormat("WakeUp Done: {0}", m_state);
     }
 }
