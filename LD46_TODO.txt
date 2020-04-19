@@ -10,7 +10,6 @@ Crucial polish
 x Prevent leaving if not fed/food not in range
 x Day titles in HUD
 - Add tutorial in game
-- Throw ability and drop offset
 x Change Spike to Heavy Block graphic
 x Add title card
 
@@ -21,8 +20,16 @@ x Chomp animations (sleep, eating, fed)
 x Player animations (walk, jump, death)
 - Improve basement interior
 - Player emotes (text/balloons)
-- Sound effects
+x Sound effects
 - Music
 - Allow gamepad
 - Make chomp look at its target
 - Fix text dancing when resized
+- Throw ability and drop offset
+
+Playtest
+========
+- Should not damage when fed
+- Chomp can get stuck on first ledge (allow hopping a bit more)
+- Allow food to be dropped onto the bowl
+x Improve 'Drop' tutorial
