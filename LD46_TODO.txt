@@ -1,0 +1,26 @@
+Bugs
+====
+- Fix text cards
+- Fix first level (food in range of spike)
+- Use up/down for jump and pickup
+- Chomp chain
+
+Crucial polish
+==============
+- Prevent leaving if not fed/food not in range
+- Day titles in HUD
+- Add tutorial in game
+- Throw ability and drop offset
+- Change Spike to Heavy Block graphic
+
+Pure polish
+===========
+- Basement exit light
+- Chomp animations (sleep, eating, fed)
+- Player animations (walk, jump, death)
+- Improve basement interior
+- Player emotes (text/balloons)
+- Sound effects
+- Music
+- Allow gamepad
+- Make chomp look at its target
