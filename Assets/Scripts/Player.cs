@@ -52,20 +52,24 @@ public class Player : MonoBehaviour
         {
             if (newBowl != null && IsCarryingFood())
             {
+                AudioPlayer.Play(Clip.FillBowl);
                 FillBowl(newBowl);
             }
             else if (newCarryable != null)
             {
+                AudioPlayer.Play(Clip.Pickup);
                 DropObject();
                 PickUp(newCarryable);
             }
             else
             {
+                AudioPlayer.Play(Clip.Drop);
                 DropObject();
             }
         }
         else if (newCarryable != null)
         {
+            AudioPlayer.Play(Clip.Pickup);
             PickUp(newCarryable);
         }
     }
@@ -121,6 +125,7 @@ public class Player : MonoBehaviour
         currentVelocity.y = 10.0f;
         deadProp.velocity = currentVelocity;
 
+        AudioPlayer.Play(Clip.Die);
 
         GameObject.Destroy(gameObject);
         GameController.Instance.OnDied();

@@ -38,6 +38,7 @@ public class ChompAI : MonoBehaviour
     ChompAIState m_state;
     Rigidbody2D m_anchorRigidbody;
     Transform[] m_chainLinks;
+    bool m_eating = false;
 
     private void Awake()
     {
@@ -69,6 +70,8 @@ public class ChompAI : MonoBehaviour
 
     void Update()
     {
+        m_eating = false;
+
         if (m_state == ChompAIState.Sleeping)
         {
             m_emitTimer += Time.deltaTime;
@@ -122,6 +125,10 @@ public class ChompAI : MonoBehaviour
             }
             else if (m_animationTimer < m_totalTime)
             {
+                if (m_eating && m_sprite.sprite != m_spriteClose)
+                {
+                    AudioPlayer.Play(Clip.Munch);
+                }
                 m_sprite.sprite = m_spriteClose;
             }
             else
@@ -171,6 +178,7 @@ public class ChompAI : MonoBehaviour
 
         if (targetOffset.magnitude < m_eatRange && target.m_satisfying)
         {
+            m_eating = true;
             m_eatTimer += Time.deltaTime;
 
             if (m_eatTimer >= m_eatDuration)
