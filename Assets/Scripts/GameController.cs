@@ -28,6 +28,20 @@ public class GameController : MonoBehaviour
         m_instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("n"))
+        {
+            var targetScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(targetScene + 1);
+        }
+        if (Input.GetKeyDown("p"))
+        {
+            var targetScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(targetScene - 1);
+        }
+    }
+
     public void OnLevelExit()
     {
         var targetScene = SceneManager.GetActiveScene().buildIndex;
