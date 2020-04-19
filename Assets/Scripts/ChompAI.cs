@@ -60,7 +60,10 @@ public class ChompAI : MonoBehaviour
         else if (m_state == ChompAIState.Fed)
         {
             var target = FindNearestPlayer();
-            ChaseTarget(target.transform);
+            if (target != null)
+            {
+                ChaseTarget(target.transform);
+            }
         }
     }
 
@@ -144,7 +147,7 @@ public class ChompAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_state == ChompAIState.Hungry)
+        if (m_state != ChompAIState.Sleeping)
         {
             m_controller.Move(m_movement, false, true);
         }
