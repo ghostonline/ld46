@@ -10,7 +10,7 @@ TextureImporter:
     second: platform
   - first:
       213: -6614373457484812694
-    second: chomp
+    second: chomp_open
   - first:
       213: 1639214462598301798
     second: player
@@ -34,7 +34,7 @@ TextureImporter:
     second: platform
   - first:
       213: -6365108388025790790
-    second: chomp
+    second: chomp_open
   - first:
       213: -6527762806206127565
     second: player
@@ -58,7 +58,7 @@ TextureImporter:
     second: platform
   - first:
       213: -6365108388025790790
-    second: chomp
+    second: chomp_open
   - first:
       213: -6527762806206127565
     second: player
@@ -94,10 +94,10 @@ TextureImporter:
     second: zzzs
   - first:
       213: 5541110501864291823
-    second: chomp_asleep
+    second: chomp_close
   - first:
       213: -5012251703786577423
-    second: tiles_15
+    second: chomp_sleep
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -237,7 +237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chomp
+      name: chomp_open
       rect:
         serializedVersion: 2
         x: 32
@@ -489,7 +489,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chomp_asleep
+      name: chomp_close
       rect:
         serializedVersion: 2
         x: 32
@@ -510,7 +510,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_15
+      name: chomp_sleep
       rect:
         serializedVersion: 2
         x: 48

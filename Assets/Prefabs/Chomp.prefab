@@ -243,6 +243,8 @@ MonoBehaviour:
     type: 3}
   m_spriteClose: {fileID: 5541110501864291823, guid: 8d69535a59f656c4088ebb83127ad1a5,
     type: 3}
+  m_spriteSleep: {fileID: -5012251703786577423, guid: 8d69535a59f656c4088ebb83127ad1a5,
+    type: 3}
   m_speed: 0.5
   m_hopForce: 200
   m_jumpForce: 400

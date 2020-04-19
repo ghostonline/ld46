@@ -5,6 +5,7 @@ using UnityEngine;
 public enum ChompAIState
 {
     Sleeping,
+    Waking,
     Hungry,
     Fed,
 }
@@ -15,6 +16,7 @@ public class ChompAI : MonoBehaviour
     public SpriteRenderer m_sprite;
     public Sprite m_spriteOpen;
     public Sprite m_spriteClose;
+    public Sprite m_spriteSleep;
     public float m_speed = 1f;
     public float m_hopForce = 50f;
     public float m_jumpForce = 250f;
@@ -31,6 +33,7 @@ public class ChompAI : MonoBehaviour
     public float m_sleepEmitInterval = 0.5f;
 
     float m_animationTimer = 0f;
+    float m_wakeTimer = 0f;
     float m_emitTimer = 0f;
     float m_eatTimer = 0f;
     float m_movement = 0f;
@@ -111,7 +114,33 @@ public class ChompAI : MonoBehaviour
 
         if (m_state == ChompAIState.Sleeping)
         {
-            m_sprite.sprite = m_spriteClose;
+            m_sprite.sprite = m_spriteSleep;
+        }
+        else if (m_state == ChompAIState.Waking)
+        {
+            const float m_wakeDuration = 1f;
+            const float m_openTime = 0.25f;
+            const float m_closeTime = 0.25f;
+            const float m_totalTime = m_openTime + m_closeTime;
+            m_animationTimer += Time.deltaTime;
+            if (m_animationTimer < m_openTime)
+            {
+                m_sprite.sprite = m_spriteSleep;
+            }
+            else if (m_animationTimer < m_totalTime)
+            {
+                m_sprite.sprite = m_spriteClose;
+            }
+            else
+            {
+                m_animationTimer -= m_totalTime;
+            }
+
+            m_wakeTimer += Time.deltaTime;
+            if (m_wakeTimer >= m_wakeDuration)
+            {
+                m_state = ChompAIState.Hungry;
+            }
         }
         else
         {
@@ -239,7 +268,7 @@ public class ChompAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_state != ChompAIState.Sleeping)
+        if (m_state != ChompAIState.Sleeping && m_state != ChompAIState.Waking)
         {
             m_controller.Move(m_movement, false, true);
         }
@@ -303,7 +332,8 @@ public class ChompAI : MonoBehaviour
     {
         if (m_state == ChompAIState.Sleeping)
         {
-            m_state = ChompAIState.Hungry;
+            m_wakeTimer = 0f;
+            m_state = ChompAIState.Waking;
         }
     }
 }
