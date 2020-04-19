@@ -1,9 +1,9 @@
 Bugs
 ====
 x Fix text cards
-- Fix first level (food in range of spike)
-- Use up/down for jump and pickup
-- Chomp chain
+x Fix first level (food in range of spike)
+x Use up/down for jump and pickup
+x Chomp chain
 
 Crucial polish
 ==============
