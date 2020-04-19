@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public ChompAI m_chomp;
     public Bowl m_bowl;
     public Transform m_spike;
+    public string m_dayTitle = "Just another day";
 
     public bool m_wakeWhenFed = false;
     public bool m_foodMustBeInRange = true;
