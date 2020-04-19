@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
         }
 
         GameObject.Destroy(gameObject);
+        GameController.Instance.OnDied();
     }
 
     private void DropObject()
