@@ -7,9 +7,12 @@ public class ClickToContinue : MonoBehaviour
 {
     public int m_forcedBuildIndex = -1;
 
+    float m_timeout = 0.0f;
+
     void Update()
     {
-        if (Input.anyKeyDown)
+        m_timeout += Time.deltaTime;
+        if (m_timeout > 0.5f && Input.anyKeyDown)
         {
             var buildIndexToLoad = SceneManager.GetActiveScene().buildIndex + 1;
             if (m_forcedBuildIndex > -1)

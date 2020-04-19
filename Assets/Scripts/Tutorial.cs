@@ -24,7 +24,7 @@ public class Tutorial : MonoBehaviour
     void Update()
     {
         m_timer += Time.deltaTime;
-        if (m_timer > 2f)
+        if (m_timer > 1f)
         {
             Flip();
             m_timer = 0f;

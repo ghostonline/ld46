@@ -19,7 +19,7 @@ public class ExitController : MonoBehaviour
 
     void Update()
     {
-        if (m_enterTime > 1f)
+        if (m_enterTime > 0.5f)
         {
             if (!m_performExitSequence)
             {

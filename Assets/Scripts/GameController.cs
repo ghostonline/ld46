@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+#if CHEATS
         if (Input.GetKeyDown("n"))
         {
             var targetScene = SceneManager.GetActiveScene().buildIndex;
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
             var targetScene = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(targetScene - 1);
         }
+#endif
     }
 
     public void OnLevelExit()
