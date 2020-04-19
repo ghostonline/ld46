@@ -9,6 +9,7 @@ public enum Clip
     FillBowl,
     Munch,
     Pickup,
+    Fanfare,
 }
 
 public class AudioPlayer : MonoBehaviour
@@ -21,6 +22,7 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip m_fillBowl;
     public AudioClip m_munch;
     public AudioClip m_pickup;
+    public AudioClip m_fanfare;
 
     private void Awake()
     {
@@ -49,6 +51,7 @@ public class AudioPlayer : MonoBehaviour
             m_fillBowl,
             m_munch,
             m_pickup,
+            m_fanfare,
         };
 
         return clips[(int)clipId];

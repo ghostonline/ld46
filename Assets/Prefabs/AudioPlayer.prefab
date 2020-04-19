@@ -50,6 +50,7 @@ MonoBehaviour:
   m_fillBowl: {fileID: 8300000, guid: 12d38e9ff5574fc478b16eab4d36360a, type: 3}
   m_munch: {fileID: 8300000, guid: b5d94e58e89806a4ea406227119ab04a, type: 3}
   m_pickup: {fileID: 8300000, guid: ae1b0f30d753db149a7927086b1477d9, type: 3}
+  m_fanfare: {fileID: 8300000, guid: fb54fbec53825d24bb645474df237d63, type: 3}
 --- !u!82 &7779166711037534229
 AudioSource:
   m_ObjectHideFlags: 0
