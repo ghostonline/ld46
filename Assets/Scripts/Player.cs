@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Transform m_carrySlot;
     public Collider2D m_actionRadius;
     public Rigidbody2D m_rigidbody;
+    public Rigidbody2D m_deadPlayerPrefab;
 
     private float m_horizontal = 0.0f;
     private bool m_jump = false;
@@ -114,6 +115,12 @@ public class Player : MonoBehaviour
         {
             DropObject();
         }
+
+        var deadProp = GameObject.Instantiate(m_deadPlayerPrefab, transform.position, transform.rotation);
+        var currentVelocity = m_rigidbody.velocity;
+        currentVelocity.y = 10.0f;
+        deadProp.velocity = currentVelocity;
+
 
         GameObject.Destroy(gameObject);
         GameController.Instance.OnDied();

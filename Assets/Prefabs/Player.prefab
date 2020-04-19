@@ -293,6 +293,8 @@ MonoBehaviour:
   m_carrySlot: {fileID: 7426960687239288140}
   m_actionRadius: {fileID: 1289072624}
   m_rigidbody: {fileID: 7426960688099901427}
+  m_deadPlayerPrefab: {fileID: 7445724180904978803, guid: d7a9e77307f2fb445a9d61b8665bd163,
+    type: 3}
 --- !u!114 &7426960688099901426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_edible: 1
+  m_satisfying: 0
 --- !u!1 &7426960688156302098
 GameObject:
   m_ObjectHideFlags: 0
