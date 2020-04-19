@@ -238,6 +238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_controller: {fileID: 8364966159689438548}
+  m_sprite: {fileID: 8364966159689438551}
+  m_spriteOpen: {fileID: -6614373457484812694, guid: 8d69535a59f656c4088ebb83127ad1a5,
+    type: 3}
+  m_spriteClose: {fileID: 5541110501864291823, guid: 8d69535a59f656c4088ebb83127ad1a5,
+    type: 3}
   m_speed: 0.5
   m_hopForce: 200
   m_jumpForce: 400

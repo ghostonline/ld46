@@ -12,6 +12,9 @@ public enum ChompAIState
 public class ChompAI : MonoBehaviour
 {
     public CharacterController2D m_controller;
+    public SpriteRenderer m_sprite;
+    public Sprite m_spriteOpen;
+    public Sprite m_spriteClose;
     public float m_speed = 1f;
     public float m_hopForce = 50f;
     public float m_jumpForce = 250f;
@@ -27,6 +30,7 @@ public class ChompAI : MonoBehaviour
     public Transform m_ZzzsEmitPoint;
     public float m_sleepEmitInterval = 0.5f;
 
+    float m_animationTimer = 0f;
     float m_emitTimer = 0f;
     float m_eatTimer = 0f;
     float m_movement = 0f;
@@ -99,6 +103,30 @@ public class ChompAI : MonoBehaviour
             if (target != null)
             {
                 ChaseTarget(target.transform);
+            }
+        }
+
+        if (m_state == ChompAIState.Sleeping)
+        {
+            m_sprite.sprite = m_spriteClose;
+        }
+        else
+        {
+            const float m_openTime = 0.25f;
+            const float m_closeTime = 0.25f;
+            const float m_totalTime = m_openTime + m_closeTime;
+            m_animationTimer += Time.deltaTime;
+            if (m_animationTimer < m_openTime)
+            {
+                m_sprite.sprite = m_spriteOpen;
+            }
+            else if (m_animationTimer < m_totalTime)
+            {
+                m_sprite.sprite = m_spriteClose;
+            }
+            else
+            {
+                m_animationTimer -= m_totalTime;
             }
         }
     }

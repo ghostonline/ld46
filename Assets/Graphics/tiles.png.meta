@@ -94,7 +94,7 @@ TextureImporter:
     second: zzzs
   - first:
       213: 5541110501864291823
-    second: tiles_14
+    second: chomp_asleep
   - first:
       213: -5012251703786577423
     second: tiles_15
@@ -489,7 +489,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_14
+      name: chomp_asleep
       rect:
         serializedVersion: 2
         x: 32
