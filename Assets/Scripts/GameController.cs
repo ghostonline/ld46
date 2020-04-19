@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         m_chompFed = true;
     }
 
-    private bool CanLeaveLevel()
+    public bool CanLeaveLevel()
     {
         if (m_chompFed)
         {

@@ -329,6 +329,7 @@ MonoBehaviour:
   m_spike: {fileID: 675980603}
   m_wakeWhenFed: 0
   m_foodMustBeInRange: 1
+  m_foodMustBeOnFloor: 1
 --- !u!1001 &693012440728661165
 PrefabInstance:
   m_ObjectHideFlags: 0
