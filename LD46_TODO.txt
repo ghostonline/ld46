@@ -7,21 +7,22 @@ x Chomp chain
 
 Crucial polish
 ==============
-- Prevent leaving if not fed/food not in range
-- Day titles in HUD
+x Prevent leaving if not fed/food not in range
+x Day titles in HUD
 - Add tutorial in game
 - Throw ability and drop offset
-- Change Spike to Heavy Block graphic
-- Add title card
+x Change Spike to Heavy Block graphic
+x Add title card
 
 Pure polish
 ===========
-- Basement exit light
-- Chomp animations (sleep, eating, fed)
-- Player animations (walk, jump, death)
+x Basement exit light
+x Chomp animations (sleep, eating, fed)
+x Player animations (walk, jump, death)
 - Improve basement interior
 - Player emotes (text/balloons)
 - Sound effects
 - Music
 - Allow gamepad
 - Make chomp look at its target
+- Fix text dancing when resized
