@@ -22,7 +22,12 @@ public class ChompAI : MonoBehaviour
     public float m_eatRange = 1f;
     public float m_eatDuration = 2f;
     public Transform m_chainLinkPrefab;
+    public Transform m_ZzzsPrefab;
+    public Transform m_HeartPrefab;
+    public Transform m_ZzzsEmitPoint;
+    public float m_sleepEmitInterval = 0.5f;
 
+    float m_emitTimer = 0f;
     float m_eatTimer = 0f;
     float m_movement = 0f;
     Rigidbody2D m_rigidbody;
@@ -60,7 +65,16 @@ public class ChompAI : MonoBehaviour
 
     void Update()
     {
-        if (m_state == ChompAIState.Hungry)
+        if (m_state == ChompAIState.Sleeping)
+        {
+            m_emitTimer += Time.deltaTime;
+            if (m_emitTimer >= m_sleepEmitInterval)
+            {
+                m_emitTimer = 0;
+                GameObject.Instantiate(m_ZzzsPrefab, m_ZzzsEmitPoint.position, Quaternion.identity);
+            }
+        }
+        else if (m_state == ChompAIState.Hungry)
         {
             var target = FindNearestEdible();
             if (target)
@@ -74,6 +88,13 @@ public class ChompAI : MonoBehaviour
         }
         else if (m_state == ChompAIState.Fed)
         {
+            m_emitTimer += Time.deltaTime;
+            if (m_emitTimer >= m_sleepEmitInterval)
+            {
+                m_emitTimer = 0;
+                GameObject.Instantiate(m_HeartPrefab, m_ZzzsEmitPoint.position, Quaternion.identity);
+            }
+
             var target = FindNearestPlayer();
             if (target != null)
             {

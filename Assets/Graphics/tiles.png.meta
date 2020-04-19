@@ -88,10 +88,10 @@ TextureImporter:
     second: whole_light
   - first:
       213: -4672163745296329812
-    second: tiles_12
+    second: heart
   - first:
       213: -8305803365058092108
-    second: tiles_13
+    second: zzzs
   - first:
       213: 5541110501864291823
     second: tiles_14
@@ -447,13 +447,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_12
+      name: heart
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 3
+        y: 3
+        width: 10
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,13 +468,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_13
+      name: zzzs
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 21
+        y: 4
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
