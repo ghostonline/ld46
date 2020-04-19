@@ -370,6 +370,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_chomp: {fileID: 1837750363}
+  m_bowl: {fileID: 693012440728661166}
+  m_spike: {fileID: 675980603}
+  m_wakeWhenFed: 1
+  m_foodMustBeInRange: 0
+  m_foodMustBeOnFloor: 1
 --- !u!114 &1837750363 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8364966159689438549, guid: 29274f25de208f04099f89be554fd4f2,
@@ -451,6 +456,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0922e300c9a5014eb8eccc6dd88bd68, type: 3}
+--- !u!114 &693012440728661166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5587119442637479967, guid: e0922e300c9a5014eb8eccc6dd88bd68,
+    type: 3}
+  m_PrefabInstance: {fileID: 693012440728661165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5080324b48b110f459d6d8fc19715d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1055839990885757535
 PrefabInstance:
   m_ObjectHideFlags: 0

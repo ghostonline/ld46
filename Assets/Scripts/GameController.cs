@@ -12,6 +12,12 @@ public class GameController : MonoBehaviour
     }
 
     public ChompAI m_chomp;
+    public Bowl m_bowl;
+    public Transform m_spike;
+
+    public bool m_wakeWhenFed = false;
+    public bool m_foodMustBeInRange = true;
+    public bool m_foodMustBeOnFloor = true;
 
     private bool m_died = false;
     private bool m_chompFed = false;
@@ -24,7 +30,7 @@ public class GameController : MonoBehaviour
     public void OnLevelExit()
     {
         var targetScene = SceneManager.GetActiveScene().buildIndex;
-        if (m_chompFed && !m_died)
+        if (CanLeaveLevel() && !m_died)
         {
             targetScene += 1;
         }
@@ -33,7 +39,7 @@ public class GameController : MonoBehaviour
 
     public void OnBowlFilled()
     {
-        if (m_chomp)
+        if (m_chomp && m_wakeWhenFed)
         {
             m_chomp.WakeUp();
         }
@@ -42,6 +48,45 @@ public class GameController : MonoBehaviour
     public void OnChompFed()
     {
         m_chompFed = true;
+    }
+
+    private bool CanLeaveLevel()
+    {
+        if (m_chompFed)
+        {
+            return true;
+        }
+        else if (m_foodMustBeInRange && !IsBowlInSpikeRange())
+        {
+            return false;
+        }
+        else if (m_foodMustBeOnFloor && !IsBowlOnFloor())
+        {
+            return false;
+        }
+        else if (!IsBowlFull())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    private bool IsBowlFull()
+    {
+        return m_bowl.IsFull();
+    }
+
+    private bool IsBowlOnFloor()
+    {
+        return m_bowl.transform.position.y < -3.5f;
+    }
+
+    private bool IsBowlInSpikeRange()
+    {
+        Vector2 offset = m_bowl.transform.position - m_spike.transform.position;
+        return offset.magnitude <= m_chomp.m_chainLength;
     }
 
     public void OnDied()
