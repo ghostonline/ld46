@@ -155,4 +155,9 @@ public class CharacterController2D : MonoBehaviour
         get { return m_JumpForce; }
         set { m_JumpForce = value; }
     }
+    public bool AirControl
+    {
+        get { return m_AirControl; }
+        set { m_AirControl = value; }
+    }
 }

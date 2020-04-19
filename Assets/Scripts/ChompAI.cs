@@ -112,10 +112,12 @@ public class ChompAI : MonoBehaviour
 
         if (m_state == ChompAIState.Hungry && targetOffset.y > 2f && Mathf.Abs(targetOffset.x) < 4f)
         {
+            m_controller.AirControl = false;
             m_controller.JumpForce = m_jumpForce;
         }
         else
         {
+            m_controller.AirControl = true;
             m_controller.JumpForce = m_hopForce;
         }
 
