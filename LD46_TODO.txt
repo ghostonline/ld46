@@ -1,6 +1,6 @@
 Bugs
 ====
-- Fix text cards
+x Fix text cards
 - Fix first level (food in range of spike)
 - Use up/down for jump and pickup
 - Chomp chain
@@ -12,6 +12,7 @@ Crucial polish
 - Add tutorial in game
 - Throw ability and drop offset
 - Change Spike to Heavy Block graphic
+- Add title card
 
 Pure polish
 ===========
