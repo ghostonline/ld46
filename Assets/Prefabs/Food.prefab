@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 1055839990355162409}
-  m_originalParent: {fileID: 0}
+  m_food: {fileID: 0}
 --- !u!1 &1055839990355162412
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 547407736}
   - component: {fileID: 547407733}
   - component: {fileID: 547407732}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
