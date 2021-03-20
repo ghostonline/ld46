@@ -9,7 +9,7 @@ Crucial polish
 ==============
 x Prevent leaving if not fed/food not in range
 x Day titles in HUD
-- Add tutorial in game
+x Add tutorial in game
 x Change Spike to Heavy Block graphic
 x Add title card
 
